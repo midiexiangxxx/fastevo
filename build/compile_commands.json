@@ -1,0 +1,7 @@
+[
+{
+  "directory": "/home/run/Projects/fastevo/build",
+  "command": "/usr/bin/c++   -I/home/run/Projects/fastevo/include  -O3 -DNDEBUG   -std=gnu++17 -o CMakeFiles/fevo.dir/main.cpp.o -c /home/run/Projects/fastevo/main.cpp",
+  "file": "/home/run/Projects/fastevo/main.cpp"
+}
+]

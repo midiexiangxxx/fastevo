@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../include/manager/fevo_manager.hpp
+iostream
+-
+memory
+-
+boost/program_options.hpp
+../include/manager/boost/program_options.hpp
+
+/home/run/Projects/fastevo/main.cpp
+manager/fevo_manager.hpp
+/home/run/Projects/fastevo/manager/fevo_manager.hpp
+
