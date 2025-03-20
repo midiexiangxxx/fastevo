@@ -1,8 +1,10 @@
+#pragma once
+#include "data_loader/loader.hpp"
 #include <iostream>
 #include <memory>
-#include "boost/program_options.hpp"
+#include <boost/program_options.hpp>
 namespace bpo = boost::program_options;
-
+namespace Fevo{
 class FevoBase {
 public:
   virtual ~FevoBase() = default;
@@ -16,8 +18,9 @@ public:
   ~FevoManager() = default;
   void run (const bpo::variables_map& args) override final {
     static_cast<Derived*>(this)->Impl(args);
+    LoaderCaller::call(args);
+    std::cout << "Loaded " << container.ref_len_ << " reference poses and " << container.est_len_ << " estimated poses" << std::endl;
   }
-private:
 };
 
 class APEImpl : public FevoManager<APEImpl> {
@@ -47,7 +50,8 @@ public:
     if(map.find(run_mode) != map.end()) {
       map[run_mode]()->run(args);
     } else {
-      std::cout << "Invalid run mode" << std::endl;
+      std::cout << "Invalid Run Mode" << std::endl;
     }
   }
 };
+} // namespace Fevo
