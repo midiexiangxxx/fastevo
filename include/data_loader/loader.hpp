@@ -15,7 +15,7 @@ struct PoseStemp {
   Eigen::Quaterniond orientation;
 };
 
-struct Container {
+inline struct Container {
   std::vector<double> refTimeStamps_;
   std::vector<double> estTimeStamps_;
   std::vector<double> refXYZ_;
