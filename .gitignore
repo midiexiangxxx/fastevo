@@ -32,3 +32,5 @@
 *.app
 
 .cache
+
+build/

@@ -1,3 +1,0 @@
-/home/run/Projects/fastevo/build/CMakeFiles/rebuild_cache.dir
-/home/run/Projects/fastevo/build/CMakeFiles/edit_cache.dir
-/home/run/Projects/fastevo/build/CMakeFiles/fevo.dir
