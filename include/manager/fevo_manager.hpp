@@ -23,24 +23,25 @@ public:
   }
 };
 
-class APEImpl : public FevoManager<APEImpl> {
+class APEManager : public FevoManager<APEManager> {
 public:
   void Impl(const bpo::variables_map& args) {
-    std::cout << "APEimpl" << std::endl;
+    std::cout << "APEManager" << std::endl;
+    
   }
 };
 
-class TrajImpl : public FevoManager<TrajImpl> {
+class TrajManager : public FevoManager<TrajManager> {
 public:
   void Impl(const bpo::variables_map& args) {
-    std::cout << "TrajImpl" << std::endl;
+    std::cout << "TrajManager" << std::endl;
   }
 };
 
 inline std::unordered_map<std::string, std::function<std::unique_ptr<FevoBase>()>> map = 
 {
-  {"ape", [] {return std::make_unique<APEImpl>();}},
-  {"traj", [] {return std::make_unique<TrajImpl>();}},
+  {"ape", [] {return std::make_unique<APEManager>();}},
+  {"traj", [] {return std::make_unique<TrajManager>();}},
 };
 
 class FevoCaller {
