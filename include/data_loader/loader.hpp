@@ -54,10 +54,10 @@ public:
     auto && ref_traj = args["ref-traj"].as<std::string>();
     auto && est_traj = args["est-traj"].as<std::string>();
     if(!std::filesystem::exists(ref_traj)) {
-      std::cout << "reference trajectory file does not exist\n\"" << ref_traj << "\"\n, aborting" << std::endl;
+      std::cout << "reference trajectory: no such file or dictionary\n\"" << ref_traj << "\"\n, aborting" << std::endl;
     }
     if(!std::filesystem::exists(est_traj)) {
-      std::cout << "estimated trajectory file does not exist\n\"" << est_traj << "\"\n, aborting" << std::endl;
+      std::cout << "estimated trajectory: no such file or dictionary\n\"" << est_traj << "\"\n, aborting" << std::endl;
     }
     loadTrajectory(ref_traj, container.refTimeStamps_, container.refXYZ_);
     loadTrajectory(est_traj, container.estTimeStamps_, container.estXYZ_);

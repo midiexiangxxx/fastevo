@@ -17,9 +17,9 @@ public:
   FevoManager() = default;
   ~FevoManager() = default;
   void run (const bpo::variables_map& args) override final {
-    static_cast<Derived*>(this)->Impl(args);
     LoaderCaller::call(args);
     std::cout << "Loaded " << container.ref_len_ << " reference poses and " << container.est_len_ << " estimated poses" << std::endl;
+    static_cast<Derived*>(this)->Impl(args);
   }
 };
 
