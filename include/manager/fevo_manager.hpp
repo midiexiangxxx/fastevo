@@ -1,10 +1,11 @@
 #pragma once
-#include "data_loader/loader.hpp"
+#include "APE/ape.hpp"
 #include <iostream>
 #include <memory>
 #include <boost/program_options.hpp>
 namespace bpo = boost::program_options;
 namespace Fevo{
+
 class FevoBase {
 public:
   virtual ~FevoBase() = default;
@@ -18,7 +19,7 @@ public:
   ~FevoManager() = default;
   void run (const bpo::variables_map& args) override final {
     LoaderCaller::call(args);
-    std::cout << "Loaded " << container.ref_len_ << " reference poses and " << container.est_len_ << " estimated poses" << std::endl;
+    // std::cout << "Loaded " << Gcontainer_.ref_len_ << " reference poses and " << Gcontainer_.est_len_ << " estimated poses" << std::endl;
     static_cast<Derived*>(this)->Impl(args);
   }
 };
@@ -26,8 +27,10 @@ public:
 class APEManager : public FevoManager<APEManager> {
 public:
   void Impl(const bpo::variables_map& args) {
-    std::cout << "APEManager" << std::endl;
-    
+    // std::cout << "APEManager" << std::endl;
+    APE ape;
+    auto error = ape.getError();
+    std::cout << error["RMSE"] << std::endl;
   }
 };
 
