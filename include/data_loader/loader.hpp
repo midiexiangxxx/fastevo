@@ -15,14 +15,14 @@ struct PoseStemp {
   Eigen::Quaterniond orientation;
 };
 
-inline struct Container {
+static inline struct Container {
   std::vector<double> refTimeStamps_;
   std::vector<double> estTimeStamps_;
   std::vector<double> refXYZ_;
   std::vector<double> estXYZ_;
   size_t ref_len_;
   size_t est_len_;
-} container;
+} Gcontainer_;
 
 class LoaderBase {
 public:
@@ -39,10 +39,10 @@ public:
     static_cast<Derived*>(this)->Impl(args);
   }
   void clear() {
-    container.refTimeStamps_.clear();
-    container.estTimeStamps_.clear();
-    container.refXYZ_.clear();
-    container.estXYZ_.clear();
+    Gcontainer_.refTimeStamps_.clear();
+    Gcontainer_.estTimeStamps_.clear();
+    Gcontainer_.refXYZ_.clear();
+    Gcontainer_.estXYZ_.clear();
   }
 
 };
@@ -59,10 +59,10 @@ public:
     if(!std::filesystem::exists(est_traj)) {
       std::cout << "estimated trajectory: no such file or dictionary\n\"" << est_traj << "\"\n, aborting" << std::endl;
     }
-    loadTrajectory(ref_traj, container.refTimeStamps_, container.refXYZ_);
-    loadTrajectory(est_traj, container.estTimeStamps_, container.estXYZ_);
-    container.ref_len_ = container.refTimeStamps_.size();
-    container.est_len_ = container.estTimeStamps_.size();
+    loadTrajectory(ref_traj, Gcontainer_.refTimeStamps_, Gcontainer_.refXYZ_);
+    loadTrajectory(est_traj, Gcontainer_.estTimeStamps_, Gcontainer_.estXYZ_);
+    Gcontainer_.ref_len_ = Gcontainer_.refTimeStamps_.size();
+    Gcontainer_.est_len_ = Gcontainer_.estTimeStamps_.size();
   }
 private:
   void loadTrajectory(const std::string& file_path, std::vector<double>& timestamps, std::vector<double>& xyz) {
